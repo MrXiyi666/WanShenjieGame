@@ -5,6 +5,8 @@
 	Scene_Map.prototype.initialize = function(){
 		_Scene_Map_prototype_initialize.call(this);
 		_Scene_Map = this;
+		Progress_Bar_index=120;
+		_actor_move_bool=false;
 	};
 	
     //地图名字坐标修改为0 不显示

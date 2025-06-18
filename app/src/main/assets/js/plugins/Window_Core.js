@@ -44,30 +44,69 @@
 		this.backOpacity=100;
 	};
 	
+	Window_StatusBase.prototype.placeBasicGauges = function(actor, x, y) {
+        //this.placeGauge(actor, "hp", x, y);
+		this.drawText("生命值：", x, y+10, this.textWidth("生命值："), "left");
+		this.drawText( actor.hp + "/" + actor.mhp, x, y+50, this.textWidth(actor.hp + "/" + actor.mhp), "left");
+    };
+	
+    
 	//保存数量
 	const _DataManager_maxSavefiles = DataManager.maxSavefiles;
 	DataManager.maxSavefiles = function() {
         return 3;
     };
+	const _Scene_Status_prototype_createProfileWindow = Scene_Status.prototype.createProfileWindow; 
+	Scene_Status.prototype.createProfileWindow = function() {
+		_Scene_Status_prototype_createProfileWindow.call(this);
+		this._profileWindow.hide();
+	};
 })();
 
 
 function 计算公式(a, b){
+	
 	let 使用者攻击力 = a.atk;
 	let 敌人防御力 = b.def;
+	使用者攻击力 = 使用者攻击力 + (a.atk * (a.hp / a.mhp));
+	幸运值倍率(使用者攻击力, a.luk);
 	if(a.level !== undefined && a.level !== null && a.level > 0 ){
 	    使用者攻击力 = 使用者攻击力 + a.level;
-	}
-	使用者攻击力 = 使用者攻击力 + 使用者攻击力 * (a.hp / a.mhp);
-	if(Math.random() < Math.min(a.luk, 999) / 999){
-		使用者攻击力 = 使用者攻击力 * 2;
 	}
 	if(b.level !== undefined && b.level !== null && b.level > 0 ){
 	    敌人防御力 = 敌人防御力 + b.level;
 	}
-	敌人防御力 = 敌人防御力 + 敌人防御力 * (b.hp / b.mhp);
-	if(Math.random() < Math.min(b.luk, 999) / 999){
-		敌人防御力 = 敌人防御力 * 2;
-	}
+	敌人防御力 = 敌人防御力 + (b.def * (b.hp / b.mhp));
+	幸运值倍率(敌人防御力, b.luk);
 	return Math.max(使用者攻击力 - 敌人防御力, 1);
+}
+
+function 幸运值倍率(值, luk){
+	if(luk >= 999 && luk< 1998){
+		 值 = 值 * 2;
+	}
+	if(luk >= 1998 && luk < 2997){
+		值 = 值 * 3;
+	}
+	if(luk >= 2997 && luk < 3996){
+		值 = 值 * 4;
+	}
+	if(luk > 3996 && luk < 4995){
+		值 = 值 * 5;
+	}
+	if(luk > 4995 && luk < 5994){
+		值 = 值 * 6;
+	}
+	if(luk > 5994 && luk < 6993){
+		值 = 值 * 7;
+	}
+	if(luk > 6993 && luk < 7992){
+		值 = 值 * 8;
+	}
+	if(luk > 7992 && luk < 8991){
+		
+	}
+	if(luk > 9990){
+		使用者攻击力 = 使用者攻击力 * 10;
+	}
 }

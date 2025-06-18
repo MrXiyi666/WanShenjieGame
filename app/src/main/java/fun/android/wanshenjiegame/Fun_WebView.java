@@ -9,7 +9,6 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import androidx.webkit.WebViewAssetLoader;
 
 public class Fun_WebView {

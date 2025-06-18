@@ -69,8 +69,8 @@
 	
 	const _Scene_Battle_prototype_initialize = Scene_Battle.prototype.initialize;
 	Scene_Battle.prototype.initialize = function(){
-		_Enemy_Window = new Inform_Window(new Rectangle(0, 50, 406, 100));
-		_Actor_Window = new Inform_Window(new Rectangle(410, 50, 400, 100));
+		_Enemy_Window = new Inform_Window(new Rectangle(0, 20, 406, 100));
+		_Actor_Window = new Inform_Window(new Rectangle(410, 20, 407, 100));
 		_Scene_Battle_prototype_initialize.call(this);
 		_Scene_Battle = this;
 	};

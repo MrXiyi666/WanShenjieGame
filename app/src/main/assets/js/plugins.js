@@ -11,5 +11,6 @@ var $plugins =
 {"name":"Fun_Battle_Information","status":true,"description":"战斗显示信息。","parameters":{}},
 {"name":"Fun_Menu_Core","status":true,"description":"","parameters":{}},
 {"name":"Fun_Map_Progress_Bar","status":true,"description":"地图上显示进度条。","parameters":{}},
-{"name":"Fun_Window_Message_Pause","status":true,"description":"","parameters":{}}
+{"name":"Fun_Window_Message_Pause","status":true,"description":"","parameters":{}},
+{"name":"Fun_New_Window_Status","status":true,"description":"","parameters":{}}
 ];

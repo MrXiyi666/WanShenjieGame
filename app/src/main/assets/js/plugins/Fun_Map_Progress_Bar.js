@@ -68,6 +68,11 @@
 	
 	PluginManager.registerCommand('Fun_Map_Progress_Bar', '打开进度条', () => {
 		_actor_move_bool = true;
+		for(let child of _Scene_Map.children){
+			if (child instanceof Progress_Bar_Window) {
+				_Scene_Map.removeChild(child);
+			}
+		}
         _Scene_Map.addChild(new Progress_Bar_Window(new Rectangle(270,400, 300,60)));
     });
 })();
