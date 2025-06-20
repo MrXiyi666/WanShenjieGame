@@ -140,8 +140,8 @@
     };
 	PluginManager.registerCommand('Fun_Task_Window', '打开窗口', () => {
 		fun_show = true;
-        _Scene_Map.addChild(new _Name_Window(new Rectangle(180,160, 200,300)));
-		_Scene_Map.addChild(new _Show_Window(new Rectangle(360, 163, 400, 300)));
+        _Scene_Map.addChild(new _Name_Window(new Rectangle(180,160, 200,290)));
+		_Scene_Map.addChild(new _Show_Window(new Rectangle(360, 163, 400, 400)));
     });
 	PluginManager.registerCommand('Fun_Task_Window', '添加任务', args => {
 		if(!args){

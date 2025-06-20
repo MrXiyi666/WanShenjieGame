@@ -38,7 +38,7 @@
     New_Window_Status.prototype.constructor = New_Window_Status;
 
     New_Window_Status.prototype.initialize = function(rect) {
-		rect.y = rect.y + 10;
+		rect.y = rect.y + 50;
         Window_StatusBase.prototype.initialize.call(this, rect);
         this._actor = null;
         this.refresh();
@@ -54,8 +54,10 @@
 	New_Window_Status.prototype.refresh = function() {
         Window_StatusBase.prototype.refresh.call(this);
         if (this._actor) {
+			
             //头像
 			this.drawActorFace(this._actor, 12, 0);
+			
 			//名称
 			this.changeTextColor(ColorManager.textColor(1));
 			this.drawText("名字：", 160, 0, this.textWidth("名字："), "left");
@@ -64,18 +66,22 @@
 			
 			//职业
 			this.changeTextColor(ColorManager.textColor(1));
-			this.drawText("职业：", 160, 55, this.textWidth("职业："), "left");
+			this.drawText("境界：", 160, 110, this.textWidth("境界："), "left");
 			this.changeTextColor(ColorManager.textColor(0));
-			this.drawActorClass(this._actor, this.textWidth("职业：") + 160, 55, 168);
-			
+			this.drawActorClass(this._actor, this.textWidth("职业：") + 160, 110, 168);
 			
 			//等级
-			this.drawActorLevel(this._actor, 160, 110);
+			//this.drawActorLevel(this._actor, 160, 110);
 			this.生命值文本();
+			
 			//经验值
-			this.drawText("总经验值：" + this._actor.currentExp() + "  升级需要：" + this._actor.nextRequiredExp(), 0, 540, this.contents.width, "left");
+			this.changeTextColor(ColorManager.textColor(1));
+		    this.drawText("生命能量：", 0, 500, this.contents.width, "left");
+		    this.changeTextColor(ColorManager.textColor(0));
+		    this.drawText($gameParty.leader()._exp[1], 130, 500, this.contents.width, "left");
             this.属性文本();
 		    this.装备文本();
+			
 		}
 		
     };
@@ -94,6 +100,7 @@
 	    this.changeTextColor(ColorManager.systemColor());
         this.drawText(slotName, 360, 270, this.contents.width, "left");
         this.drawItemName(item, 450, 270, this.contents.width);
+
 	};
 	
 	New_Window_Status.prototype.属性文本 = function() {

@@ -33,8 +33,9 @@
 		this.contents.clear();
 		this.contents.fillAll(ColorManager.outlineColor());
 		let _Data_zero = this._enemy.name();
-		if(this._enemy.level){
-			_Data_zero = _Data_zero + " Lv." + this._enemy.level;
+		if(this._enemy._classId){
+			const classId = this._enemy._classId;
+			_Data_zero = _Data_zero + "-" + $dataClasses[classId].name;		
 		}
 		this.drawText(_Data_zero, 0, 0, this.width, "center");
 		this.contents.fillRect(110, 35, (this.width-145) * (this._enemy.hp/this._enemy.mhp), 35, "rgba(255, 0, 0, 1)");

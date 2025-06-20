@@ -12,5 +12,8 @@ var $plugins =
 {"name":"Fun_Menu_Core","status":true,"description":"","parameters":{}},
 {"name":"Fun_Map_Progress_Bar","status":true,"description":"地图上显示进度条。","parameters":{}},
 {"name":"Fun_Window_Message_Pause","status":true,"description":"","parameters":{}},
-{"name":"Fun_New_Window_Status","status":true,"description":"","parameters":{}}
+{"name":"Fun_New_Window_Status","status":true,"description":"","parameters":{}},
+{"name":"Fun_Equip_Up","status":true,"description":"成长装备 提升属性。","parameters":{}},
+{"name":"Fun_Menu_Status","status":true,"description":"","parameters":{}},
+{"name":"Fun_Date","status":true,"description":"判断是否为新的一天","parameters":{}}
 ];

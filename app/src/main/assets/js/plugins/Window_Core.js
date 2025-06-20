@@ -21,7 +21,24 @@
 		this.backOpacity=0;
 		this.opacity = 0;
 		this.frameVisible = false;
+		this.文字速度缓冲 = 0;
 	};
+	Window_Base.prototype.processCharacter = function(textState) {
+		this.文字速度缓冲 = this.文字速度缓冲 +0.1;
+		if(this.文字速度缓冲>0.3){
+			this.文字速度缓冲 = 0;
+			const c = textState.text[textState.index++];
+		
+            if (c.charCodeAt(0) < 0x20) {
+                this.flushTextState(textState);
+                this.processControlCharacter(textState, c);
+            } else {
+                textState.buffer += c;
+            }
+		}
+        
+    };
+	
 	const _Window_Scrollable_prototype_updateArrows = Window_Scrollable.prototype.updateArrows;
 	Window_Scrollable.prototype.updateArrows = function() {
         this.downArrowVisible = false;
@@ -43,12 +60,6 @@
 		_Window_Message_prototype_initialize.call(this, rect);
 		this.backOpacity=100;
 	};
-	
-	Window_StatusBase.prototype.placeBasicGauges = function(actor, x, y) {
-        //this.placeGauge(actor, "hp", x, y);
-		this.drawText("生命值：", x, y+10, this.textWidth("生命值："), "left");
-		this.drawText( actor.hp + "/" + actor.mhp, x, y+50, this.textWidth(actor.hp + "/" + actor.mhp), "left");
-    };
 	
     
 	//保存数量
